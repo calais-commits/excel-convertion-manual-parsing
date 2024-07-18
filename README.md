@@ -1,0 +1,1 @@
+# excel-convertion-manual-parsing
