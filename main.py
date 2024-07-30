@@ -76,29 +76,30 @@ def rename_sheet(file_path):
 # This function will ask for all the other files and will add them as sheets
 def merge_files(file_path, folder_name, timestamp):
   if file_path:
-    excel_files = list(Path(folder_name).glob('*.xlsx'))
-    combined_wb = xw.Book()
-
-    for excel_file in excel_files:
-      wb = xw.Book(excel_file)
-      for sheet in wb.sheets:
-        # Obtener el nombre del archivo sin la extensión .xlsx
-        sheet_name = excel_file.stem
-        # Copiar la hoja y asignarle el nombre del archivo
-        sheet.api.Copy(After=combined_wb.sheets[0].api)
-        combined_wb.sheets[1].name = sheet_name
-
+    with xw.App(visible=False) as app:
+      excel_files = list(Path(folder_name).glob('*.xlsx'))
+      combined_wb = xw.Book()
     
-    # Save the combined workbook with a timestamp
-    combined_wb.sheets[0].delete()
-    combined_wb.save(f'merged{timestamp}.xlsx')
+      for excel_file in excel_files:
+        wb = xw.Book(excel_file)
+        for sheet in wb.sheets:
+          # Obtener el nombre del archivo sin la extensión .xlsx
+          sheet_name = excel_file.stem
+          # Copiar la hoja y asignarle el nombre del archivo
+          sheet.api.Copy(After=combined_wb.sheets[0].api)
+          combined_wb.sheets[1].name = sheet_name
 
-    if len(combined_wb.app.books) == 1:
-      combined_wb.app.quit()
-      return 'All files merged successfully'
-    else:
-      combined_wb.close()
-      return 'Error: Failed to merge files'
+      
+      # Save the combined workbook with a timestamp
+      combined_wb.sheets[0].delete()
+      combined_wb.save(f'merged{timestamp}.xlsx')
+
+      if len(combined_wb.app.books) == 1:
+        combined_wb.app.quit()
+        return 'All files merged successfully'
+      else:
+        combined_wb.close()
+        return 'Error: Failed to merge files'
 
 def main():
   root = tk.Tk()
