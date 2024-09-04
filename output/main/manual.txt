@@ -1,0 +1,45 @@
+¡Bienvenido a la versión de prueba de este script: 'Manual de estimación de horas'!
+
+Descripción: Esta versión preliminar del script realiza las siguientes tareas...
+
+1- Al ser ejecutado, abre una ventana con la interfaz gráfica del programa.
+2- Cuando es presionado el boton 'START', evalúa si en el archivo 'TechnicalProperties', la propiedad 'Unicode' tiene valor yes o no
+
+# Si la respuesta es no (la información del archivo no es de tipo Unicode):
+- Abrirá una ventana de confirmación indicando que la información en el archivo no es de tipo Unicode, 
+aquí tendrá la opción de escoger si continuar con la ejecución del programa o no.
+
+  ## Si la respuesta es no (no se continuará con la ejecución del script):
+  - Finalizarán todos los procesos y se cerrarán las ventanas del programa.
+
+  ## Si la respuesta es sí (se continuará con la ejecución del script):
+  - Se le indicará al script que continuará con la ejecución de las tareas.
+
+# Si la respuesta es sí (la información del archivo es de tipo Unicode o se decidió continuar con la ejecución de el script):
+
+3- El script buscará en los archivos de la carpeta 'documents' todas las hojas de Excel que estos tienen
+4- Se creará un nuevo archivo de Excel cuyo nombre tendrá el timestamp de el momento en que se ejecutó el script
+5- En este nuevo archivo se copiarán todas las hojas de Excel de los archivos revisados en el paso 3
+6- El script renombrará estas nuevas hojas agregadas en el archivo resultante, asignándoles como nombre, el nombre del archivo fuente
+
+Por ejemplo:
+
+El archivo Activities tiene una hoja llamada 'Doc1', esta hoja se copia al archivo nuevo con el mismo nombre.
+El script cambiará este nombre por defecto, y le asignará el nombre del archivo, en este caso, 'Activities'.
+De forma que, el nuevo archivo de Excel tendrá una nueva hoja llamada 'Activities' y no 'Doc1'
+
+7- En la interfaz gráfica del programa, se mostrarán los mensajes de como va avanzando el proceso.
+8- Una vez, la interfaz muestre el mensaje 'Files merged successfully', significa que el script ha ejecutado todas sus tareas y ha guardado los cambios. Puede cerrar el programa.
+
+
+Instrucciones:
+
+1- Todos los archivos de Excel que serán utilizados durante la ejecución del programa, deben estar todos contenidos en una carpeta llamada "documents" (importante que esté escrito exactamente como el texto entre las comillas dobles, todo en minúsculas y con "s" al final).
+2- El programa está contenido en una carpeta llamada "main", dentro de esta carpeta encontrará este manual, el archivo main.exe y una carpeta llamada "_internal".
+3- Es dentro de esta carpeta "_internal" donde copiará la carpeta "documents" cópielos en cualquier parte dentro de la carpeta "_internal", pero no dentro de otra carpeta, dentro de "_internal", es decir, tienen que estar sueltos dentro de "_internal".
+4- Una vez realizado esto, puede ejecutar el archivo "main.exe" y comenzar la ejecución del programa.
+5- El archivo resultante será llamado "merged" + el timestamp del momento en que fue creado. Este archivo lo encontrará en la misma ruta donde se encuentra el archivo "main.exe", es decir, dentro de la carpeta raíz "main".
+
+Contacto:
+
+Dudas, errores o sugerencias, por favor, contactar con Jesús Meléndez | jesus.melendez@globpar.com
